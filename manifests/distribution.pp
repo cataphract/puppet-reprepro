@@ -53,7 +53,7 @@ define reprepro::distribution (
   $sign_with,
   $codename       = $name,
   $ensure         = present,
-  $basedir        = $::reprepro::params::basedir,
+  $basedir        = $::reprepro::basedir,
   $udebcomponents = $components,
   $deb_indices    = 'Packages Release .gz .bz2',
   $dsc_indices    = 'Sources Release .gz .bz2',
@@ -101,9 +101,9 @@ define reprepro::distribution (
   if $install_cron {
 
     if $snapshots {
-      $command = "${::reprepro::params::homedir}/bin/update-distribution.sh -r ${repository} -d ${suite} -c ${name} -s"
+      $command = "${::reprepro::homedir}/bin/update-distribution.sh -r ${repository} -d ${suite} -c ${name} -s"
     } else {
-      $command = "${::reprepro::params::homedir}/bin/update-distribution.sh -r ${repository} -d ${suite} -c ${name}"
+      $command = "${::reprepro::homedir}/bin/update-distribution.sh -r ${repository} -d ${suite} -c ${name}"
     }
 
     cron { "${name} cron":
@@ -111,7 +111,7 @@ define reprepro::distribution (
       user        => $::reprepro::params::user_name,
       environment => 'SHELL=/bin/bash',
       minute      => '*/5',
-      require     => File["${::reprepro::params::homedir}/bin/update-distribution.sh"],
+      require     => File["${::reprepro::homedir}/bin/update-distribution.sh"],
     }
   }
 

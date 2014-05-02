@@ -29,7 +29,7 @@
 #
 define reprepro::repository (
   $ensure          = present,
-  $basedir         = $::reprepro::params::basedir,
+  $basedir         = $::reprepro::basedir,
   $incoming_name   = 'incoming',
   $incoming_dir    = 'incoming',
   $incoming_tmpdir = 'tmp',

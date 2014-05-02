@@ -32,7 +32,7 @@
 define reprepro::filterlist (
   $repository,
   $packages,
-  $basedir = $::reprepro::params::basedir,
+  $basedir = $::reprepro::basedir,
   $ensure=present
 ) {
 
