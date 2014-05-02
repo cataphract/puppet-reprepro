@@ -19,5 +19,8 @@ Update: <%= @update %>
 <% end -%>
 <% if @not_automatic != "" -%>
 NotAutomatic: <%= @not_automatic %>
+<% if @not_automatic == "yes" && @but_automatic_upgrades != "" -%>
+ButAutomaticUpgrades: <%= @but_automatic_upgrades -%>
+<% end -%>
 <% end -%>
 

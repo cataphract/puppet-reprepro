@@ -22,6 +22,10 @@
 #   - *install_cron*: install cron job to automatically include new packages
 #   - *not_automatic*: automatic pined to 1 by using NotAutomatic,
 #                      value are "yes" or "no"
+#   - *but_automatic_upgrades*: in conjunction with not_automatic, pins the
+#                               packages to 100 instead of 1. Values are "yes"
+#                               or "no". Only considered if not_automatic is
+#                               "yes". See man 5 apt_preferences
 #
 # === Requires
 #
@@ -51,17 +55,18 @@ define reprepro::distribution (
   $components,
   $description,
   $sign_with,
-  $codename       = $name,
-  $ensure         = present,
-  $basedir        = $::reprepro::basedir,
-  $udebcomponents = $components,
-  $deb_indices    = 'Packages Release .gz .bz2',
-  $dsc_indices    = 'Sources Release .gz .bz2',
-  $update         = '',
-  $uploaders      = '',
-  $snapshots      = false,
-  $install_cron   = true,
-  $not_automatic  = 'yes'
+  $codename               = $name,
+  $ensure                 = present,
+  $basedir                = $::reprepro::basedir,
+  $udebcomponents         = $components,
+  $deb_indices            = 'Packages Release .gz .bz2',
+  $dsc_indices            = 'Sources Release .gz .bz2',
+  $update                 = '',
+  $uploaders              = '',
+  $snapshots              = false,
+  $install_cron           = true,
+  $not_automatic          = 'yes',
+  $but_automatic_upgrades = 'no',
 ) {
 
   include reprepro::params
