@@ -98,7 +98,7 @@ define reprepro::distribution (
   # Configure system for automatically adding packages
   file { "${basedir}/${repository}/tmp/${name}":
     ensure => directory,
-    mode   => '0755',
+    mode   => '0775',
     owner  => $::reprepro::params::user_name,
     group  => $::reprepro::params::group_name,
   }
