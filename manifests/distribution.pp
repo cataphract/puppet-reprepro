@@ -118,7 +118,7 @@ define reprepro::distribution (
     }
   }
 
-  if $update {
+  if "$update" != '' {
     concat { "${basedir}/${repository}/conf/updates":
       owner   => $::reprepro::params::user_name,
       group   => $::reprepro::params::group_name,

@@ -9,7 +9,7 @@ class reprepro::params {
   $homedir = '/var/packages'
 
   case $::osfamily {
-    Debian: {
+    'Debian': {
       $package_name = 'reprepro'
       $user_name    = 'reprepro'
       $group_name   = 'reprepro'
