@@ -70,7 +70,6 @@ define reprepro::distribution (
 ) {
 
   include reprepro::params
-  include concat::setup
 
   $notify = $ensure ? {
     present => Exec["export distribution ${name}"],
@@ -78,7 +77,6 @@ define reprepro::distribution (
   }
 
   concat::fragment { "distribution-${name}":
-    ensure  => $ensure,
     target  => "${basedir}/${repository}/conf/distributions",
     content => template('reprepro/distribution.erb'),
     notify  => $notify,
